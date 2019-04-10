@@ -134,6 +134,45 @@ public class My_function {
 		}
 		return status;
 		}
+
+	public static boolean verifyAdmin(String user, String pass) {
+		boolean status=false;
+		try {
+		Connection con=dbConnectivity.Connectivity.dbConnect();
+		String qry="select * from admin where UserName ='"+user+"'  and Password='"+pass+"'";
+		Statement st=con.createStatement();
+		ResultSet rst=st.executeQuery(qry);
+		if(rst.next()) {
+			status=true;
+					}
+		}catch (Exception e) {
+			System.out.println(e);
+			JOptionPane.showMessageDialog(null, e);
+		}
+		return status;
+	
+	}
+
+	public static boolean newUser(String card, String pin, String username, String accountype) {
+		boolean status=false;
+		try {
+			int i=0;
+			Connection con=dbConnectivity.Connectivity.dbConnect();
+		    String qry="insert into accountDetails(CardNo,Pin,AvailBal,UserName,AccountType) Values(?,?,'0',?,?)";
+			PreparedStatement pst=con.prepareStatement(qry);
+			pst.setString(1, card);
+			pst.setString(2, pin);
+			pst.setString(3, username);
+			pst.setString(4, accountype);
+				
+			i=pst.executeUpdate();
+			if(i>0)
+				 status=true;
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		return status;
+	}
 	}
 
 	

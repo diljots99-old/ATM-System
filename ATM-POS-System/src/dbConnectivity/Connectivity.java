@@ -16,7 +16,7 @@ public class Connectivity {
 		Connection con=null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			
+			HostUrl="jdbc:mysql://localhost:3306/sql12287356";
 			con=DriverManager.getConnection(HostUrl,user,pass);			
 			//con=DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12278903","sql12278903","root");//freesqldatabase.com
 			//con=DriverManager.getConnection("jdbc:mysql://movie.csdstgnin8g7.us-east-2.rds.amazonaws.com:3306/","root","password");//Amazon Web Services
